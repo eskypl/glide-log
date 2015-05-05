@@ -1,16 +1,14 @@
 {
   "name": "glide-log",
   "version": "0.0.1",
-  "description": "JavaScript debug plugin(console.log) for RequireJS.",
+  "description": "JavaScript aggregator for using multiple logging adapters.",
   "repository": "git@github.com:eskypl/glide-log.git",
   "homepage": "https://github.com/eskypl/glide-log.git",
   "bugs": "https://github.com/eskypl/glide-log/issues",
   "author": "it.esky.pl",
   "readmeFilename": "README.md",
   "contributors": [
-    "Krzysztof Winiarski <krzysztof.winiarski@esky.com>",
-    "Aleksander Szmigiel <aleksander.szmigiel@esky.com>",
-    "Paweł Wojnar pawel.wojnar@esky.com>"
+    "Szymon Cofalik <szymon.cofalik@esky.pl"
   ],
   "keywords": [
     "console",

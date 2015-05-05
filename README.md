@@ -1,7 +1,10 @@
 
 # <a href="https://github.com/eskypl/glide"><img src="https://raw.github.com/eskypl/glide/master/assets/glide-logo.png" alt="Glide" width="84"></a> Log
 
-JavaScript debug plugin(console.log) for RequireJS.
+JavaScript aggregator for using multiple logging adapters.
+Any log message that will be sent by it will be pushed to all registered adapters.
+Supports different reporting levels for each adapter.
+To simplify usage and integration, glide-log implements window.console interface (log, info, debug, warn, error methods).
 
 ## Instalation
 
@@ -24,28 +27,21 @@ require.config({
 });
 ```
 
-To disable reporting just add to the body site
-
-```html
-<script type="text/javascript">
-	var ibeConfig = {
-		development: false
-	};
-</script>
-```
-
 ## Usage
 
 ```js
 define([
-  'example',
   'debug'
-], function ($example, debug) {
-  debug.log('replaces the "console.log".');
-  debug.debug('replaces the "console.debug".');
-  debug.info('replaces the "console.info".');
-  debug.warn('replaces the "console.warn".');
-  debug.error('replaces the "console.error".');
+], function (debug) {
+  // adds window.console which is a native logging adapter for browsers
+  // and sets its reporting level to report error and warn logs
+  debug.addAdapter(window.console, debug.REPORT_ERROR | debug.REPORT_WARN);
+
+  debug.log('simple log message'); // won't be sent to the browser console
+  debug.debug('debugging message for developer'); // won't be sent to the browser console
+  debug.info('simple informing message'); // won't be sent to the browser console
+  debug.warn('message with a warning'); // will be sent to the browser console
+  debug.error('message with an error'); // will be sent to the browser console
 });
 ```
 
